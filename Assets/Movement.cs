@@ -69,16 +69,14 @@ public class Movement : MonoBehaviour
         targetDir.Normalize();
  
         currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
- 
-        velocityY += gravity * 2f;
 
-        //velocityY += gravity * 2f * Time.deltaTime;
+        velocityY += gravity * 2f * Time.deltaTime;
  
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * Speed + Vector3.up * velocityY;
  
         controller.Move(velocity * Time.deltaTime);
 
-        Debug.Log(velocityY);
+        //Debug.Log(velocityY);
  
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
